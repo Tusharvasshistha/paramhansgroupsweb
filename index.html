@@ -1,380 +1,422 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parmahans Group | Security, Housekeeping & Labour Contractor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
-      color: #222;
-      position: relative;
-      overflow-x: hidden;
-    }
-    /* SVG background shapes */
-    .bg-svg {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      opacity: 0.18;
-    }
-    header {
-      background: #1e293b;
-      color: #fff;
-      padding: 2rem 0 1.5rem 0;
-      text-align: center;
-      box-shadow: 0 4px 24px 0 rgba(30,41,59,0.10);
-    }
-    .logo {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
-    }
-    .tagline {
-      font-size: 1.3rem;
-      color: #fbbf24;
-      margin-bottom: 0.5rem;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1.2rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: #38bdf8;
-    }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      background: none;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(30,41,59,0.4);
-      padding: 4rem 1rem 2rem 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 {
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-      animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: none; }
-    }
-    .hero .hero-img {
-      animation: fadeIn 1.5s 0.2s both;
-      box-shadow: 0 8px 32px 0 rgba(56,189,248,0.18),0 2px 12px 0 rgba(30,41,59,0.10);
-      border: 4px solid #fbbf24;
-      border-radius: 1.5rem;
-      object-fit: cover;
-      width: 100%;
-      max-width: 370px;
-      margin: 0 auto;
-      display: block;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-    .cta-btn {
-      background: linear-gradient(90deg, #38bdf8 0%, #06b6d4 100%);
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 700;
-      padding: 0.9rem 2.5rem;
-      border: none;
-      border-radius: 2rem;
-      box-shadow: 0 2px 12px 0 rgba(6,182,212,0.15);
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .cta-btn:hover {
-      background: linear-gradient(90deg, #06b6d4 0%, #38bdf8 100%);
-      transform: translateY(-2px) scale(1.04);
-    }
-    .section {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 2rem 1.5rem;
-      background: #fff;
-      border-radius: 1.5rem;
-      box-shadow: 0 2px 24px 0 rgba(30,41,59,0.08);
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .service-card {
-      flex: 1 1 280px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 1.2rem;
-      box-shadow: 0 2px 24px 0 rgba(56,189,248,0.13);
-      padding: 2.2rem 1.7rem;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      border: 2px solid #38bdf8;
-      position: relative;
-      z-index: 1;
-    }
-    .service-card:hover {
-      transform: translateY(-8px) scale(1.04) rotate(-1deg);
-      box-shadow: 0 12px 40px 0 rgba(56,189,248,0.22);
-      border-color: #fbbf24;
-      background: rgba(255,255,255,0.92);
-    }
-    /* Testimonial */
-    .testimonial {
-      margin: 3rem auto 0 auto;
-      max-width: 700px;
-      background: linear-gradient(90deg,#fbbf24 0%,#38bdf8 100%);
-      color: #1e293b;
-      border-radius: 1.2rem;
-      box-shadow: 0 2px 24px 0 rgba(30,41,59,0.10);
-      padding: 2rem 2.5rem 1.5rem 2.5rem;
-      font-size: 1.15rem;
-      font-style: italic;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial:before {
-      content: '“';
-      font-size: 3rem;
-      color: #2563eb;
-      position: absolute;
-      left: 1.2rem;
-      top: 0.5rem;
-      opacity: 0.2;
-    }
-    .testimonial .author {
-      display: block;
-      margin-top: 1.2rem;
-      font-weight: 700;
-      color: #2563eb;
-      font-style: normal;
-      font-size: 1rem;
-    }
-    /* Sticky CTA */
-    .sticky-cta {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 100;
-      background: linear-gradient(90deg,#38bdf8 0%,#22c55e 100%);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 1rem 2.2rem;
-      border-radius: 2rem;
-      box-shadow: 0 4px 24px 0 rgba(34,197,94,0.18);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .sticky-cta:hover {
-      background: linear-gradient(90deg,#22c55e 0%,#38bdf8 100%);
-      transform: scale(1.05);
-    }
-    /* Contact form */
-    .contact-form {
-      margin: 2rem auto 0 auto;
-      max-width: 420px;
-      background: #f8fafc;
-      border-radius: 1rem;
-      box-shadow: 0 2px 12px 0 rgba(30,41,59,0.08);
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-    .contact-form input, .contact-form textarea {
-      border: 1.5px solid #38bdf8;
-      border-radius: 0.7rem;
-      padding: 0.7rem 1rem;
-      font-size: 1rem;
-      font-family: inherit;
-      outline: none;
-      transition: border 0.2s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: #2563eb;
-    }
-    .contact-form button {
-      background: linear-gradient(90deg,#2563eb 0%,#fbbf24 100%);
-      color: #1e293b;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 2rem;
-      padding: 0.8rem 2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 12px 0 rgba(251,191,36,0.10);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .contact-form button:hover {
-      background: linear-gradient(90deg,#fbbf24 0%,#2563eb 100%);
-      transform: scale(1.04);
-    }
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #06b6d4;
-    }
-    .service-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #1e293b;
-    }
-    .service-desc {
-      color: #334155;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    .about {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #334155;
-      margin-bottom: 1.5rem;
-    }
-    .contact {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .contact-info {
-      font-size: 1.1rem;
-      color: #1e293b;
-      margin-bottom: 0.5rem;
-    }
-    @media (max-width: 900px) {
-      .services {
-        flex-direction: column;
-        gap: 1.5rem;
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paramhans Groups | Security • Housekeeping • Labour Contractor</title>
+
+    <!-- SEO essentials -->
+    <meta name="description" content="Paramhans Groups provides professional Security, Housekeeping, and Labour Contracting services for offices, societies, and events. Trained staff, transparent pricing, and 24/7 support." />
+    <meta name="keywords" content="security guards, housekeeping services, labour contractor, facility management, cleaning services, manpower supply, Paramhans Groups" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Paramhans Groups – Security • Housekeeping • Labour Contractor" />
+    <meta property="og:description" content="Trusted by offices & societies for reliable manpower, spotless cleaning, and 24/7 security." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-cover.jpg" />
+    <meta property="og:url" content="https://www.phgroups.com/" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon (replace with your own) -->
+    <link rel="icon" href="/favicon.png" />
+
+    <style>
+      :root{
+        --bg: #0b1220; /* deep slate bg for gradients */
+        --card:#0f172a; /* slate-900 */
+        --text:#e5e7eb; /* gray-200 */
+        --muted:#94a3b8; /* slate-400 */
+        --brand:#38bdf8; /* sky-400 */
+        --brand-2:#fbbf24; /* amber-400 */
+        --accent:#22c55e; /* green-500 */
+        --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 35%, transparent);
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;
+        font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+        color:var(--text);
+        background: radial-gradient(1200px 800px at 10% -10%, #1e293b, transparent 60%),
+                   radial-gradient(900px 600px at 110% 20%, #0ea5e9, transparent 50%),
+                   linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
+        overflow-x:hidden;
+      }
+      a{color:var(--brand);text-decoration:none}
+      img{max-width:100%;display:block}
+
+      /* Container */
+      .wrap{max-width:1120px;margin-inline:auto;padding:0 20px}
+
+      /* Header */
+      .header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(148,163,184,.12)}
+      .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+      .brand{display:flex;align-items:center;gap:12px}
+      .brand img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(56,189,248,.35));background:#fff;border-radius:50%;padding:6px}
+      .brand h1{font-size:1.2rem;letter-spacing:.6px;margin:0;font-weight:800}
+      .navlinks{display:flex;gap:18px;align-items:center}
+      .navlinks a{color:var(--text);opacity:.9;font-weight:600}
+      .navlinks a:hover{color:var(--brand)}
+      .cta{background:linear-gradient(90deg,var(--brand-2),var(--brand));color:#0b1220;font-weight:800;border:none;border-radius:999px;padding:10px 16px;cursor:pointer}
+      .cta:focus-visible{outline:none;box-shadow:var(--ring)}
+
+      /* Hero */
+      .hero{position:relative;isolation:isolate}
+      .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0 32px}
+      .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(148,163,184,.14);border:1px solid rgba(148,163,184,.18);padding:6px 10px;border-radius:999px;font-size:.9rem;color:var(--muted)}
+      .hero h2{font-size:clamp(2.1rem, 4vw, 3.2rem);line-height:1.1;margin:14px 0 14px;font-weight:800}
+      .hero h2 .hi{color:var(--brand-2)}
+      .hero p{color:var(--muted);font-size:1.05rem;max-width:58ch}
+      .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+      .btn{border-radius:12px;padding:12px 16px;font-weight:700;border:1px solid rgba(148,163,184,.22);background:#111827;color:#e5e7eb}
+      .btn.primary{background:linear-gradient(90deg,var(--brand),#06b6d4);color:#06202e;border:none}
+      .btn:hover{transform:translateY(-1px)}
+      .hero-img{
+        border-radius:18px;overflow:hidden;position:relative;box-shadow:0 18px 50px rgba(2,132,199,.25), inset 0 0 0 1px rgba(255,255,255,.06)
+      }
+      .hero-img img{aspect-ratio:4/3;object-fit:cover}
+      .blob{position:absolute;inset:auto -12% -12% auto;width:280px;height:280px;background:radial-gradient(circle at 30% 30%, #22c55e55, transparent 60%), radial-gradient(circle at 70% 60%, #38bdf855, transparent 60%);filter:blur(35px);z-index:-1;border-radius:50%}
+
+      /* Trust bar */
+      .trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:26px 0 6px;opacity:.85}
+      .trust .pill{border:1px dashed rgba(148,163,184,.25);padding:10px 12px;border-radius:10px;text-align:center;font-size:.95rem;color:var(--muted)}
+
+      /* Section */
+      section{padding:56px 0}
+      .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:12px}
+      .sec-head h3{margin:0;font-size:1.6rem}
+      .lead{color:var(--muted)}
+
+      /* Services */
+      .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+      .card{background:linear-gradient(180deg, rgba(17,24,39,.9), rgba(15,23,42,.85));border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:18px;position:relative;transition:transform .15s ease, box-shadow .15s ease}
+      .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(56,189,248,.15)}
+      .icon{display:inline-flex;width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.4);margin-bottom:8px}
+      .card h4{margin:4px 0 8px;font-size:1.15rem}
+      .card p{color:var(--muted);font-size:.98rem}
+      .list{margin:12px 0 0;padding:0 0 0 18px;color:var(--muted)}
+
+      /* Industries */
+      .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+      .chip{border:1px solid rgba(148,163,184,.22);padding:8px 10px;border-radius:999px;color:#cbd5e1;background:#0b1226}
+
+      /* Steps */
+      .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+      .step{border:1px solid rgba(148,163,184,.18);background:#0b1226;border-radius:14px;padding:16px}
+      .step .num{font-weight:800;color:var(--brand-2)}
+
+      /* Testimonial (simple slider) */
+      .t-wrap{position:relative}
+      .t-card{border:1px solid rgba(148,163,184,.18);background:linear-gradient(180deg,#0b1226,#0f172a);border-radius:14px;padding:16px;min-height:140px}
+      .t-author{margin-top:8px;color:#cbd5e1;font-weight:700}
+      .t-nav{display:flex;gap:8px;margin-top:10px}
+      .dot{width:10px;height:10px;border-radius:50%;background:#334155;border:1px solid #475569;cursor:pointer}
+      .dot.active{background:var(--brand)}
+
+      /* Contact */
+      .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+      .form{display:grid;gap:12px}
+      .input{background:#0b1226;border:1px solid rgba(148,163,184,.25);border-radius:12px;padding:12px 14px;color:#e2e8f0}
+      .input:focus{outline:none;box-shadow:var(--ring);border-color:#38bdf8}
+      textarea.input{min-height:120px;resize:vertical}
+      .info-box{border:1px solid rgba(148,163,184,.2);background:linear-gradient(180deg,#0b1226,#0f172a);border-radius:14px;padding:16px}
+      .info-row{display:flex;align-items:center;gap:10px;color:#cbd5e1;margin:6px 0}
+
+      /* CTA bar */
+      .cta-bar{background:linear-gradient(90deg,var(--brand-2),var(--brand));color:#0b1220;border-radius:16px;padding:18px;border:1px solid #082f38}
+      .cta-bar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+      /* Footer */
+      footer{border-top:1px solid rgba(148,163,184,.12);padding:26px 0;color:#94a3b8}
+      .foot{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+
+      /* WhatsApp floating */
+      .wa{position:fixed;bottom:18px;right:18px;z-index:40;display:inline-flex;gap:10px;align-items:center;padding:12px 14px;border-radius:999px;background:#22c55e;color:#041b0e;font-weight:800;border:none;box-shadow:0 18px 40px rgba(34,197,94,.25);cursor:pointer}
+
+      /* Responsive */
+      @media (max-width: 980px){
+        .hero-grid{grid-template-columns:1fr;gap:18px}
+        .grid{grid-template-columns:1fr 1fr}
+        .steps{grid-template-columns:repeat(2,1fr)}
+        .contact{grid-template-columns:1fr}
+      }
+      @media (max-width: 640px){
+        .grid{grid-template-columns:1fr}
+      }
+
+      /* Light mode opt-in if user's system is light */
+      @media (prefers-color-scheme: light){
+        :root{--text:#0f172a;--muted:#475569}
+        body{color:var(--text);background:linear-gradient(180deg,#f8fafc,#eef2ff)}
+        .header{background:rgba(255,255,255,.7);border-bottom-color:#e2e8f0}
+        .card, .info-box, .t-card, .step{background:#fff}
+        .input{background:#fff;color:#0f172a}
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Paramhans Groups">
+          <img src="/logo.png" alt="Paramhans Groups logo" />
+          <h1>Paramhans Groups</h1>
+        </a>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact" class="cta" style="padding:10px 14px">Get Quote</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow" aria-label="Tagline"><span>Trusted Facility Partner</span> • <span>Since 2018</span></span>
+            <h2>
+              Your one partner for <span class="hi">Security</span>, <span style="color:var(--brand)">Housekeeping</span> & <span style="color:var(--accent)">Manpower</span>
+            </h2>
+            <p>
+              We provide vetted staff, clear SLAs, and responsive support so you can focus on your core business. Transparent pricing, quick onboarding, and service across Delhi NCR.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Request a Proposal</a>
+              <a class="btn" href="#services">Explore Services</a>
+            </div>
+            <div class="trust" aria-label="Highlights">
+              <div class="pill">24/7 Helpdesk</div>
+              <div class="pill">Background-Verified Staff</div>
+              <div class="pill">Uniformed & Trained</div>
+              <div class="pill">PAN India Tie-ups</div>
+            </div>
+          </div>
+          <div class="hero-img" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Professional team on duty" loading="lazy" />
+            <div class="blob"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <div class="wrap">
+          <div class="sec-head">
+            <h3>Services built for reliability</h3>
+            <p class="lead">Customizable plans, clear KPIs, and monthly reporting.</p>
+          </div>
+          <div class="grid" role="list">
+            <article class="card" role="listitem">
+              <div class="icon" aria-hidden="true">🔒</div>
+              <h4>Security Services</h4>
+              <p>Trained guards, visitor management, night patrolling, and emergency response with site-specific SOPs.</p>
+              <ul class="list">
+                <li>Armed / Unarmed Guards</li>
+                <li>Event & Retail Security</li>
+                <li>CCTV & Access Control Ops</li>
+              </ul>
+            </article>
+            <article class="card" role="listitem">
+              <div class="icon" aria-hidden="true">🧹</div>
+              <h4>Housekeeping</h4>
+              <p>Daily cleaning, deep cleaning, pantry, and façade services with eco-friendly supplies on request.</p>
+              <ul class="list">
+                <li>AMC & Shift Roster</li>
+                <li>Machine-based Scrubbing</li>
+                <li>Disinfection & Waste Mgmt</li>
+              </ul>
+            </article>
+            <article class="card" role="listitem">
+              <div class="icon" aria-hidden="true">👷</div>
+              <h4>Labour Contracting</h4>
+              <p>Skilled / unskilled manpower for operations, logistics, and projects with quick replacement policy.</p>
+              <ul class="list">
+                <li>Loaders / Packers</li>
+                <li>Technicians & Supervisors</li>
+                <li>Project-based Hiring</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industries -->
+      <section id="industries">
+        <div class="wrap">
+          <div class="sec-head">
+            <h3>Industries we serve</h3>
+            <p class="lead">Flexible contracts for sites of any size.</p>
+          </div>
+          <div class="chips">
+            <span class="chip">Corporate Offices</span>
+            <span class="chip">Residential Societies</span>
+            <span class="chip">Warehouses</span>
+            <span class="chip">Retail & Malls</span>
+            <span class="chip">Hospitals</span>
+            <span class="chip">Events & Exhibitions</span>
+            <span class="chip">Schools & Colleges</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section id="process">
+        <div class="wrap">
+          <div class="sec-head">
+            <h3>Simple, accountable process</h3>
+            <p class="lead">Clear SLAs. Single point of contact. Fast onboarding.</p>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="num">1</div><h4>Site Survey</h4><p class="lead">Free assessment and risk mapping.</p></div>
+            <div class="step"><div class="num">2</div><h4>Proposal & SOP</h4><p class="lead">Custom plan with KPIs and rosters.</p></div>
+            <div class="step"><div class="num">3</div><h4>Deployment</h4><p class="lead">Onboarding, uniforms, and briefing.</p></div>
+            <div class="step"><div class="num">4</div><h4>Monitor & Report</h4><p class="lead">Monthly reviews and quick replacements.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials">
+        <div class="wrap t-wrap">
+          <div class="sec-head">
+            <h3>What clients say</h3>
+            <p class="lead">Reliable teams. Noticeable difference in service quality.</p>
+          </div>
+          <div class="t-card" id="t-card" aria-live="polite">
+            <p id="t-text">“We switched to Paramhans for security and cleaning. Professional, reliable, and responsive!”</p>
+            <div class="t-author" id="t-author">— Neha Goswami, Facility Manager</div>
+          </div>
+          <div class="t-nav" role="tablist" aria-label="Testimonials navigation">
+            <button class="dot active" aria-label="Slide 1" data-i="0"></button>
+            <button class="dot" aria-label="Slide 2" data-i="1"></button>
+            <button class="dot" aria-label="Slide 3" data-i="2"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA bar -->
+      <section aria-label="Quick quote">
+        <div class="wrap cta-bar">
+          <div class="row">
+            <div>
+              <strong>Need a quick quote?</strong>
+              <div>Share your site size and preferred shift timings. We’ll respond within 24 hours.</div>
+            </div>
+            <a class="btn" style="background:#0b1226;color:#e2e8f0;border-color:#0ea5e9" href="#contact">Get Started</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="wrap">
+          <div class="sec-head">
+            <h3>Contact us</h3>
+            <p class="lead">We’ll tailor a proposal to your needs.</p>
+          </div>
+          <div class="contact">
+            <form class="form" onsubmit="handleSubmit(event)">
+              <input class="input" type="text" name="name" placeholder="Your Name" required />
+              <input class="input" type="email" name="email" placeholder="Email" required />
+              <input class="input" type="tel" name="phone" placeholder="Phone" />
+              <textarea class="input" name="message" placeholder="Tell us about your site & service needs" required></textarea>
+              <button class="btn primary" type="submit">Send Message</button>
+              <small class="lead">Or write to <a href="mailto:admin@phgroups.com">admin@phgroups.com</a> • Call <a href="tel:+919999924079">+91 99999 24079</a></small>
+            </form>
+            <aside class="info-box">
+              <h4 style="margin:0 0 8px">Paramhans Groups</h4>
+              <div class="info-row">📍 Sector 8, Sonepat, 131001</div>
+              <div class="info-row">🕒 Support: 24/7 | Office: 10:00–18:00</div>
+              <div class="info-row">💼 GST & Compliance ready</div>
+              <div class="info-row">🪪 Staff: ID, uniforms, background check</div>
+              <div class="info-row">🛡️ Safety: SOPs, drills, supervision</div>
+              <iframe title="Map" style="margin-top:10px;border:0;border-radius:12px;width:100%;height:220px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Sector%208%20Sonepat%20131001&output=embed"></iframe>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <div>© <span id="yr"></span> Paramhans Groups. All rights reserved.</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="#top" aria-label="Back to top">↑ Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a class="wa" href="https://wa.me/919999924079?text=Hello%20Paramhans%20Groups%2C%20I%27d%20like%20a%20quote." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      WhatsApp
+    </a>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Paramhans Groups",
+      "url": "https://www.phgroups.com/",
+      "logo": "https://www.phgroups.com/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/",
+        "https://www.linkedin.com/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-99999-24079",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi"]
       }
     }
-  </style>
-</head>
-  <body>
-    <!-- SVG background shapes -->
-    <svg class="bg-svg" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="1200" cy="200" r="220" fill="#38bdf8"/>
-      <ellipse cx="300" cy="800" rx="180" ry="90" fill="#fbbf24"/>
-      <ellipse cx="900" cy="900" rx="300" ry="80" fill="#22c55e"/>
-    </svg>
-  <header style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1.2rem 2.5vw 1.2rem 2.5vw;box-sizing:border-box;">
-    <div class="logo" style="display:flex;align-items:center;gap:1rem;min-width:260px;">
-      <img src="logo.png" alt="Parmahans Group Logo" style="height:72px;width:72px;vertical-align:middle;filter:drop-shadow(0 2px 8px #38bdf8aa);background:#fff;border-radius:50%;padding:8px;object-fit:contain;"/>
-  <span style="font-size:2.3rem;font-weight:800;letter-spacing:2px;color:#1e293b;">Paramhans Groups</span>
-    </div>
-    <div style="flex:1;display:flex;flex-direction:column;align-items:flex-end;min-width:220px;">
-  <div class="tagline" style="color:#2563eb;font-size:1.15rem;font-weight:600;margin-bottom:0.3rem;">Securing, Cleaning & Empowering Your Business</div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-  <section class="hero">
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:1200px;gap:2.5rem;">
-      <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;gap:2.5rem;width:100%;flex-wrap:wrap;">
-        <div style="flex:1 1 350px;min-width:320px;max-width:600px;">
-          <h1>Your Trusted Partner for <span style="color:#fbbf24;">Security</span>, <span style="color:#38bdf8;">Housekeeping</span> & <span style="color:#22c55e;">Labour Solutions</span></h1>
-          <p style="font-size:1.25rem;max-width:700px;margin:1.2rem 0 2rem 0;line-height:1.6;">
-            Paramhans Groups is dedicated to providing <b>professional security</b>, <b>spotless housekeeping</b>, and <b>reliable manpower</b> for your business needs. Experience peace of mind and operational excellence with our expert team.
-          </p>
-          <button class="cta-btn" style="background:linear-gradient(90deg,#fbbf24 0%,#2563eb 100%);color:#1e293b;" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Our Services</button>
-        </div>
-        <div style="flex:1 1 320px;display:flex;align-items:center;justify-content:center;min-width:280px;">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Team at work" class="hero-img"/>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="testimonial">
-  “We switched to Paramhans Groups for our office security and cleaning. The difference is night and day—professional, reliable, and always responsive!”
-  <span class="author">— Neha Goswami, Facility Manager</span>
-  </div>
-  <section class="section" id="about">
-    <div class="section-title">About Us</div>
-    <div class="about">
-  <b>Paramhans Groups</b> is your all-in-one partner for <span style="color:#2563eb;font-weight:600;">Security</span>, <span style="color:#38bdf8;font-weight:600;">Housekeeping</span>, and <span style="color:#22c55e;font-weight:600;">Labour Contracting</span> services. Our mission is to empower businesses with trusted, efficient, and affordable solutions—so you can focus on what matters most.<br><br>
-      <span style="color:#fbbf24;font-weight:600;">Why choose us?</span> <br>
-      <ul style="margin:0.7rem auto 0 auto;max-width:600px;text-align:left;">
-        <li>✔️ Vetted, trained, and uniformed staff</li>
-        <li>✔️ Flexible contracts and transparent pricing</li>
-        <li>✔️ 24/7 support and rapid response</li>
-        <li>✔️ Serving businesses, societies, and events</li>
-      </ul>
-    </div>
-  </section>
-  <section class="section" id="services">
-    <div class="section-title">Our Services</div>
-    <div class="services">
-      <div class="service-card">
-  <div class="service-icon">&#128274;</div>
-  <div class="service-title" style="color:#2563eb;">Security Services</div>
-  <div class="service-desc">Trained security guards, 24/7 monitoring, and custom security plans for offices, societies, and events. Your safety is our priority.</div>
-      </div>
-      <div class="service-card">
-  <div class="service-icon">&#128705;</div>
-  <div class="service-title" style="color:#38bdf8;">Housekeeping</div>
-  <div class="service-desc">Professional cleaning, sanitization, and maintenance for offices, commercial spaces, and residential complexes. Spotless results, every time.</div>
-      </div>
-      <div class="service-card">
-  <div class="service-icon">&#128188;</div>
-  <div class="service-title" style="color:#22c55e;">Labour Contractor</div>
-  <div class="service-desc">Reliable supply of skilled and unskilled manpower for your projects—short-term or long-term. Hassle-free staffing, always on time.</div>
-      </div>
-    </div>
-  </section>
-    <section class="section" id="contact">
-    <div class="section-title">Contact Us</div>
-    <div class="contact">
-  <form class="contact-form" onsubmit="event.preventDefault();alert('Thank you for contacting Paramhans Groups! We will get back to you soon.');this.reset();">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-  <div class="contact-info" style="margin-top:2rem;">Email: <a href="mailto:admin@phgroups.com" style="color:#2563eb;font-weight:600;">admin@phgroups.com</a></div>
-  <div class="contact-info">Phone: <a href="tel:+919999924079" style="color:#22c55e;font-weight:600;">9999924079</a></div>
-  <div class="contact-info">Address: <span style="color:#fbbf24;font-weight:600;">sector 8 sonepat, 131001</span></div>
-      <div style="margin-top:1.5rem;font-size:1.1rem;color:#1e293b;">We respond within 24 hours. Let’s build a safer, cleaner, and more productive future together!</div>
-    </div>
-  </section>
-  <button class="sticky-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us Now</button>
-</body>
+    </script>
+
+    <script>
+      // Replace year
+      document.getElementById('yr').textContent = new Date().getFullYear();
+
+      // Simple form handler
+      function handleSubmit(e){
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target).entries());
+        alert(`Thank you, ${data.name}! We'll get back to you within 24 hours.`);
+        e.target.reset();
+      }
+
+      // Tiny testimonial slider
+      const testimonials = [
+        {
+          text: '“We switched to Paramhans for security and cleaning. Professional, reliable, and responsive!”',
+          author: '— Neha Goswami, Facility Manager'
+        },
+        {
+          text: '“Their housekeeping standards improved our workplace hygiene scores within weeks.”',
+          author: '— Operations Lead, NCR Tech Park'
+        },
+        {
+          text: '“Quick onboarding and transparent billing. Great replacement policy.”',
+          author: '— Facility Head, Retail Chain'
+        }
+      ];
+      const tText = document.getElementById('t-text');
+      const tAuthor = document.getElementById('t-author');
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+      let i = 0; function go(n){ i = n; update(); }
+      function update(){
+        tText.textContent = testimonials[i].text;
+        tAuthor.textContent = testimonials[i].author;
+        dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
+      }
+      setInterval(()=>{ i = (i+1)%testimonials.length; update(); }, 5000);
+    </script>
+  </body>
 </html>
